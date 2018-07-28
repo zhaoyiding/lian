@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Font-Awesome/css/font-awesome.min.css">
+    <title>个人凭证授权平台</title>
+    <style type="text/css">
+    	#tb a:visited{
+    		color: black;
+    	}
+    	#tb a:hover{
+    		text-decoration: underline;
+    		color: #009688;
+    	}
+      .logoImages{
+        width:100%;
+        /* height:100px; */
+        position: relative;
+        top: -5px;
+        left: -15px;
+      }
+    </style>
+  </head>
+
+  <body class="sidebar-mini fixed">
+    <div class="wrapper">
+      <header class="main-header hidden-print">
+        <!-- <a class="logo text-center">logo金链萌</a> -->
+        <a class="logo text-center">
+          <img src="./images/logo1.png" alt="logo" class="logoImages">
+        </a>
+          <nav class="navbar navbar-static-top">
+            <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
+            <div class="navbar-custom-menu">
+              <ul class="top-nav">
+                <!-- 消息通知 -->
+                <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
+                  <ul class="dropdown-menu">
+                      <a href="#"><li class="not-head">你有新的通知消息</li></a>
+                  </ul>
+                </li>
+                <!--个人中心-->
+                <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+                  <ul class="dropdown-menu settings-menu">
+                    <li><a href="#"><i class="fa fa-cog fa-lg"></i>设置</a></li>
+                    <li><a href="#"><i class="fa fa-user fa-lg"></i>个人中心</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out fa-lg"></i>登出</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+
+      <!-- Side-Nav-->
+      <aside class="main-sidebar hidden-print">
+        <section class="sidebar">
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+            </div>
+            <div class="pull-left info">
+              <p>企业名称</p>
+              <p class="designation">联系方式</p>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="active"><a href="corporateBank.html"><i class="fa fa-th-list"></i><span>银行流水</span></a></li>
+            <li><a href="corporateHuji.html"><i class="fa fa-address-card-o"></i><span>户籍证明</span></a></li>
+            <li><a href="corporateHospital.html"><i class="fa fa-ambulance"></i><span>医疗记录</span></a></li>
+            <li><a href="corporateEducation.html"><i class="fa fa-graduation-cap"></i><span>学历信息</span></a></li>
+          </ul>
+        </section>
+      </aside>
+
+      <div class="content-wrapper">
+        <div class="row">   
+          <div class="card text-center" style="display: inline-block;width: 100%;">
+            <h3>查询银行流水信息</h3>
+            <div class="card-body" style="text-align: left; width: 50%;display: inline-block;">
+              <form>
+                <div class="form-group">
+                  <label class="control-label">证件号：</label>
+                  <input class="form-control" type="text" placeholder="输入被查询人的身份证号" required="required" >
+                </div>
+                <div class="form-group">
+                  <div class="checkbox">
+                    <label><input type="checkbox" id="p_b"/>已阅读并接受本协议所有条款</label>
+                  </div>
+                </div>
+                <div class="form-group btn-container">
+                  <button class="btn btn-primary btn-block" id="sub_button" style="width:40%;margin-right: auto;margin-left: auto;" >提交查询</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+	        <div class="card" style="display: inline-block;width: 100%;">
+	          <h3 class="card-title text-center">查询记录：</h3>
+	          <div><p style="display: none;">暂无查询记录</p></div>
+	          <div class="col-md-12">
+	            <div class="card">
+	              <div class="table-responsive">
+	                <table class="table text-center">
+	                  <thead>
+	                    <tr>
+	                      <th style="text-align: center;">信息类别</th>
+	                      <th style="text-align: center;">身份证号</th>
+	                      <th style="text-align: center;">授权状态</th>
+	                      <th style="text-align: center;">查看状态</th>
+	                    </tr>
+	                  </thead>
+	                  <tbody id="tb">
+	                    <tr>
+	                      <td>银行信息</td>
+	                      <td>420198198812012789</td>
+	                      <td>已授权</td>
+	                      <td><a href="d_info.html">查看</a></td>
+	                    </tr>
+	                    <tr>
+	                      <td>医疗信息</td>
+	                      <td>210986199602175784</td>
+	                      <td>等待授权</td>
+	                      <td>-</td>
+	                    </tr>
+	                    <tr>
+	                      <td>教育信息</td>
+	                      <td>410878199711096543</td>
+	                      <td>已授权</td>
+	                      <td><a href="d_info.html">查看</a></td>
+	                    </tr>
+	                    <tr>
+	                      <td>户籍信息</td>
+	                      <td>280765678948779890</td>
+	                      <td>已拒绝</td>
+	                      <td>-</td>
+	                    </tr>
+	                  </tbody>
+	                </table>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/pace.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        var a = document.getElementById('sub_button');
+        var b = document.getElementById('p_b');
+        a.onclick=function()
+        {
+          if(b.checked == false)
+          {
+            alert("请先阅读并同意协议！");
+            return false;
+          }
+          else
+          {
+          	alert("提交成功！")
+          }
+        } 
+
+        var c = $("#tb a");
+        c.onclick =  function()
+        {
+        	alert("hello");
+        }
+      }
+    </script>
+  </body>
+</html>
