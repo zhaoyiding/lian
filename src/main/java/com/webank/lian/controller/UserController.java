@@ -86,4 +86,14 @@ public class UserController {
 		
 		return "disagree";
 	}
+	
+	@RequestMapping(value = "/bankflow")
+	public String getBankFlow(@RequestParam("identification") String identification,
+	                          Model model) {
+		User user = userService.getUserByIdentification(identification);
+		model.addAttribute("user", user);
+		
+		
+		return "yinhang";
+	}
 }
