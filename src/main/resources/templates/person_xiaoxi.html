@@ -11,25 +11,31 @@
             left: 3%;
         }
 
-        ol.x_ul {
-            list-style-type: decimal;
-            /* border: 1px solid red; */
-        }
-
         ol li {
             margin-top: 10px;
         }
 
         .anniu {
-            /* border: 1px solid red; */
             position: relative;
             right: -50%;
         }
 
-        /* .last_btn{
-          position: relative;
-          right: -73.5%;
-        } */
+        #tb a:visited {
+            color: black;
+        }
+
+        #tb a:hover {
+            text-decoration: underline;
+            color: #009688;
+        }
+
+        .logoImages {
+            width: 100%;
+            /* height:100px; */
+            position: relative;
+            top: -5px;
+            left: -15px;
+        }
     </style>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
@@ -43,7 +49,10 @@
 
     <!-- 导航栏 -->
     <header class="main-header hidden-print">
-        <a class="logo">logo金链萌</a>
+        <!--<a class="logo">logo金链萌</a>-->
+        <a class="logo text-center">
+            <img th:src="@{/images/logo1.png}" alt="logo" class="logoImages">
+        </a>
         <nav class="navbar navbar-static-top">
             <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
             <div class="navbar-custom-menu">
@@ -88,8 +97,10 @@
 
             <!-- 信息展示项 -->
             <ul class="sidebar-menu">
-                <li><a href="index.html"><i class="fa fa-dashboard"></i><span>我的授权</span></a></li>
-                <li><a href="yinhang.html"><i class="fa fa-th-list"></i><span>银行流水</span></a></li>
+                <li><a th:href="'/index/user/'+${user.identification}"><i class="fa fa-dashboard"></i><span>我的授权</span></a>
+                </li>
+                <li><a th:href="'/user/bankflow?identification='+${user.identification}"><i
+                        class="fa fa-th-list"></i><span>银行信息</span></a></li>
                 <li><a href="caichan.html"><i class="fa fa-edit"></i><span></span>财产证明</span></a></li>
                 <li><a href="huji.html"><i class="fa fa-laptop"></i><span></span>户籍证明</a></span></li>
                 <li><a href="yiliao.html"><i class="fa fa-file-text"> </i><span></span>医疗记录</span></a></li>

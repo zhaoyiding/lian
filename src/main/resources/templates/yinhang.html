@@ -1,145 +1,176 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>金链萌</title>
 
     <style>
-        .table1 td{height:30px;width:100px}
-        .input{padding:0;margin:0;height:100%;width:100%;border:none;}
-        
+        .table1 td {
+            height: 30px;
+            width: 100px
+        }
+
+        .input {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            border: none;
+        }
+
+        .logoImages {
+            width: 100%;
+            /* height:100px; */
+            position: relative;
+            top: -5px;
+            left: -15px;
+        }
+
     </style>
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  
-  </head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
 
-  <body class="sidebar-mini fixed">
-    <div class="wrapper">
+</head>
 
-      <!-- 导航栏 -->
-      <header class="main-header hidden-print">
-        <a class="logo">logo金链萌</a>
+<body class="sidebar-mini fixed">
+<div class="wrapper">
+
+    <!-- 导航栏 -->
+    <header class="main-header hidden-print">
+        <!--<a class="logo">logo金链萌</a>-->
+        <a class="logo text-center">
+            <img th:src="@{/images/logo1.png}" alt="logo" class="logoImages">
+        </a>
         <nav class="navbar navbar-static-top">
-          <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
-          <div class="navbar-custom-menu">
-            <ul class="top-nav">
-              <!-- 消息通知 -->
-              <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
-                <ul class="dropdown-menu">
-                  <li class="not-head">你有新的通知消息</li>
+            <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
+            <div class="navbar-custom-menu">
+                <ul class="top-nav">
+                    <!-- 消息通知 -->
+                    <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown"
+                                                              aria-expanded="false"><i
+                            class="fa fa-bell-o fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li class="not-head">你有新的通知消息</li>
+                        </ul>
+                    </li>
+                    <!--个人中心-->
+                    <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                                            aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
+                        <ul class="dropdown-menu settings-menu">
+                            <li><a href="#"><i class="fa fa-cog fa-lg"></i>设置</a></li>
+                            <li><a href="#"><i class="fa fa-user fa-lg"></i>个人中心</a></li>
+                            <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i>登录</a></li>
+                        </ul>
+                    </li>
                 </ul>
-              </li>
-              <!--个人中心-->
-              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
-                <ul class="dropdown-menu settings-menu">
-                  <li><a href="#"><i class="fa fa-cog fa-lg"></i>设置</a></li>
-                  <li><a href="#"><i class="fa fa-user fa-lg"></i>个人中心</a></li>
-                  <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i>登录</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+            </div>
         </nav>
-      </header>
+    </header>
 
-      <!-- 侧边栏-->
-      <aside class="main-sidebar hidden-print">
+    <!-- 侧边栏-->
+    <aside class="main-sidebar hidden-print">
         <section class="sidebar">
-          
-          <!-- 头像 名称 -->
-          <div class="user-panel">
-            <div class="pull-left image">
-              <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
-            </div>
-            <div class="pull-left info">
-                <p>姓名</p>
-                <p class="designation">电话</p>
-            </div>
-          </div>
 
-          <!-- 信息展示项 -->
-          <ul class="sidebar-menu">
-            <li><a href="user_index.html"><i class="fa fa-dashboard"></i><span>我的授权</span></a></li>
-            <li class="active"><a href="yinhang.html"><i class="fa fa-th-list"></i><span>银行流水</span></a></li>
-            <li><a href="caichan.html"><i class="fa fa-edit"></i><span></span>财产证明</span></a></li>
-            <li><a href="huji.html"><i class="fa fa-laptop"></i><span></span>户籍证明</a></span></li>
-            <li><a href="yiliao.html"><i class="fa fa-file-text"> </i><span></span>医疗记录</span></a></li>
-            <li><a href="xueli.html"><i class="fa fa-circle-o"></i><span></span>学历信息</span></a></li>
-          </ul>
+            <!-- 头像 名称 -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
+                         alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p th:text="'姓名:'+${user.name}"></p>
+                    <p class="designation" th:text="'电话:'+${user.phone}"></p>
+                </div>
+            </div>
+
+            <!-- 信息展示项 -->
+            <ul class="sidebar-menu">
+                <li><a th:href="'/index/user/'+${user.identification}"><i class="fa fa-dashboard"></i><span>我的授权</span></a>
+                </li>
+                <li><a th:href="'/user/bankflow?identification='+${user.identification}"><i
+                        class="fa fa-th-list"></i><span>银行信息</span></a></li>
+                <li><a href="caichan.html"><i class="fa fa-edit"></i><span></span>财产证明</span></a></li>
+                <li><a href="huji.html"><i class="fa fa-laptop"></i><span></span>户籍证明</a></span></li>
+                <li><a href="yiliao.html"><i class="fa fa-file-text"> </i><span></span>医疗记录</span></a></li>
+                <li><a href="xueli.html"><i class="fa fa-circle-o"></i><span></span>学历信息</span></a></li>
+            </ul>
 
         </section>
-      </aside>
+    </aside>
 
-      <script src="js/jquery-2.1.4.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/plugins/pace.min.js"></script>
-      <script src="js/main.js"></script>
-      <script src="js/vue.js"></script>
+    <script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/plugins/pace.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
 
-      <!-- 内容区域 -->
-      <div class="content-wrapper">
+    <!-- 内容区域 -->
+    <div class="content-wrapper">
         <div class="row">
             <div class="card" id="box">
                 <h3 class="card-title text-center">银行流水</h3>
-            <table id="table" class="table table-bordered table-hover table1" border="1" cellspacing="0">
-                <tr class="text-center">
-                    <td>开户人</td>
-                    <td>银行名称</td>
-                    <td>操作</td>
-                </tr>
-                <tr class="text-center">
-                    <td>金莲萌</td>
-                    <td>中国银行</td>
-                    <td><button class="btn btn-danger btn-sm" onclick="update(this,1)">修改</button></td>
-                </tr>
-                <tr class="text-center">
-                    <td>小可爱</td>
-                    <td>招商银行</td>
-                    <td><button class="btn btn-danger btn-sm" onclick="update(this,2)">修改</button></td>
-                </tr>
-            </table>
+                <table id="table" class="table table-bordered table-hover table1" border="1" cellspacing="0">
+                    <tr class="text-center">
+                        <td>开户人</td>
+                        <td>银行名称</td>
+                        <td>操作</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>金莲萌</td>
+                        <td>中国银行</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" onclick="update(this,1)">修改</button>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>小可爱</td>
+                        <td>招商银行</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" onclick="update(this,2)">修改</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
 
     </div>
-
     <script>
-        function update(obj,x){
-            var table = document.getElementById("table");
-            for(var i=0;i<table.rows[x].cells.length-1;i++){
-                var text = table.rows[x].cells[i].innerHTML;
-                table.rows[x].cells[i].innerHTML = '<input class="input" name="input'+ x + '" type="text" value=""/>';
-                var input = document.getElementsByName("input" + x);
-                input[i].value = text;
-                input[0].focus();
-                input[0].select();
-            }
-            obj.innerHTML = "确定";
-            obj.onclick = function onclick(event) {
-                update_success(this,x)
-            };
-        }
-        function update_success(obj,x){
-            var arr = [];
-            var table = document.getElementById("table");
-            var input = document.getElementsByName("input" + x);
-            for(var i=0;i<table.rows[x].cells.length-1;i++){
-            var text = input[i].value;
-                arr.push(text);
-            }
-            for(var j=0;j<arr.length;j++){
-                table.rows[x].cells[j].innerHTML = arr[j];
-            }
-            obj.innerHTML = "修改";
-            obj.onclick = function onclick(event) {
-                update(this,x)
-            };
-        }    
+		function update(obj, x) {
+			var table = document.getElementById("table");
+			for (var i = 0; i < table.rows[x].cells.length - 1; i++) {
+				var text = table.rows[x].cells[i].innerHTML;
+				table.rows[x].cells[i].innerHTML = '<input class="input" name="input' + x + '" type="text" value=""/>';
+				var input = document.getElementsByName("input" + x);
+				input[i].value = text;
+				input[0].focus();
+				input[0].select();
+			}
+			obj.innerHTML = "确定";
+			obj.onclick = function onclick(event) {
+				update_success(this, x)
+			};
+		}
+
+		function update_success(obj, x) {
+			var arr = [];
+			var table = document.getElementById("table");
+			var input = document.getElementsByName("input" + x);
+			for (var i = 0; i < table.rows[x].cells.length - 1; i++) {
+				var text = input[i].value;
+				arr.push(text);
+			}
+			for (var j = 0; j < arr.length; j++) {
+				table.rows[x].cells[j].innerHTML = arr[j];
+			}
+			obj.innerHTML = "修改";
+			obj.onclick = function onclick(event) {
+				update(this, x)
+			};
+		}
 
     </script>
 
-  </body>
+</body>
 </html>
