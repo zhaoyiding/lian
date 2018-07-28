@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,8 +11,8 @@
         
     </style>
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}">
   
   </head>
 
@@ -30,7 +30,7 @@
               <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
                 <ul class="dropdown-menu">
                   <li class="not-head">你有新的通知消息</li>
-                </ul>
+                </ul>s
               </li>
               <!--个人中心-->
               <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
@@ -73,11 +73,17 @@
         </section>
       </aside>
 
-      <script src="js/jquery-2.1.4.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/plugins/pace.min.js"></script>
-      <script src="js/main.js"></script>
-      <script src="js/vue.js"></script>
+        <script type="text/javascript" th:src="@{/js/jquery-2.1.4.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/plugins/pace.min.js}"></script>
+        <script type="text/javascript" th:src="@{/js/main.js}"></script>
+        <script type="text/javascript" th:src="@{/js/vue.js}"></script>
+
+      <!--<script src="js/jquery-2.1.4.min.js"></script>-->
+      <!--<script src="js/bootstrap.min.js"></script>-->
+      <!--<script src="js/plugins/pace.min.js"></script>-->
+      <!--<script src="js/main.js"></script>-->
+      <!--<script src="js/vue.js"></script>-->
 
       <!-- 内容区域 -->
       <div class="content-wrapper">
@@ -86,20 +92,21 @@
                 <h3 class="card-title text-center">银行流水</h3>
             <table id="table" class="table table-bordered table-hover table1" border="1" cellspacing="0">
                 <tr class="text-center">
-                    <td>开户人</td>
                     <td>银行名称</td>
-                    <td>操作</td>
+                    <td>操作类型</td>
+                    <td>操作时间</td>
+                    <td>金额</td>
                 </tr>
+                <div class="news-item" th:each="bankStatement,stat :${bankStatements}">
+
                 <tr class="text-center">
-                    <td>金莲萌</td>
-                    <td>中国银行</td>
-                    <td><button class="btn btn-danger btn-sm" onclick="update(this,1)">修改</button></td>
+                    <td th:text= "${bankStatement.bankName}"></td>
+                    <td th:text= "${bankStatement.operateType}"></td>
+                    <td th:text= "${bankStatement.operateDate}"></td>
+                    <td th:text= "${bankStatement.amount}"></td>
                 </tr>
-                <tr class="text-center">
-                    <td>小可爱</td>
-                    <td>招商银行</td>
-                    <td><button class="btn btn-danger btn-sm" onclick="update(this,2)">修改</button></td>
-                </tr>
+
+                </div>>
             </table>
         </div>
     </div>
